@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hola Mundo!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1: #0f172a;
+      --bg2: #071026;
+      --accent: #7c3aed;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(135deg,var(--bg1),var(--bg2));
+      display:grid;
+      place-items:center;
+      color:#fff;
+      overflow:hidden;
+    }
+
+    /* Ambient gradient blobs */
+    .gradient{
+      position:absolute;
+      inset:-25%;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(124,58,237,0.20), transparent 12%),
+        radial-gradient(circle at 80% 80%, rgba(6,182,212,0.12), transparent 14%);
+      filter: blur(80px);
+      animation: floatBg 12s linear infinite;
+      z-index:0;
+    }
+    @keyframes floatBg{
+      0%{transform:translate(0,0)}
+      50%{transform:translate(-8%,6%)}
+      100%{transform:translate(0,0)}
+    }
+
+    .card{
+      position:relative;
+      z-index:1;
+      padding:3rem 4rem;
+      border-radius:18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      backdrop-filter: blur(8px) saturate(120%);
+      box-shadow: 0 12px 40px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+      text-align:center;
+      transform: translateZ(0);
+      max-width:1000px;
+      width:90%;
+    }
+
+    h1{
+      margin:0;
+      font-weight:800;
+      font-size: clamp(2.8rem, 12vw, 8rem);
+      line-height:0.9;
+      color:#fff;
+      letter-spacing: -0.02em;
+      text-shadow: 0 8px 40px rgba(124,58,237,0.18), 0 2px 8px rgba(0,0,0,0.6);
+      animation: bob 4s ease-in-out infinite;
+    }
+    @keyframes bob{
+      0%{transform:translateY(0)}
+      50%{transform:translateY(-8px)}
+      100%{transform:translateY(0)}
+    }
+
+    .lead{
+      margin-top:1rem;
+      font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+      color: rgba(255,255,255,0.88);
+    }
+
+    .spark{
+      display:inline-block;
+      width:0.7em;
+      height:0.7em;
+      margin-left:0.6rem;
+      background: linear-gradient(45deg,var(--accent),#06b6d4);
+      border-radius:50%;
+      box-shadow: 0 8px 22px rgba(124,58,237,0.45);
+      animation: pulse 1.6s ease-in-out infinite;
+      vertical-align:middle;
+    }
+    @keyframes pulse{
+      0%{transform:scale(1)}
+      50%{transform:scale(1.25)}
+      100%{transform:scale(1)}
+    }
+
+    .hint{
+      margin-top:0.9rem;
+      font-size:0.8rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Small screens */
+    @media (max-width:420px){
+      .card{padding:2rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="gradient" aria-hidden="true"></div>
+
+  <main class="card" role="main">
+    <h1>Hola Mundo! <span class="spark" aria-hidden="true"></span></h1>
+    <p class="lead">Una página sencilla con tipografía grande y un diseño moderno.</p>
+    <p class="hint">Guarda este archivo como <code>index.html</code> y ábrelo en tu navegador.</p>
+  </main>
+</body>
+</html>
