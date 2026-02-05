@@ -1,0 +1,23 @@
+name: Notificación de Cambios
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Enviar notificación a ntfy.sh
+        run: |
+          curl -X POST \
+            -H "Title: 🚀 Nuevo Push en Repositorio" \
+            -H "Priority: high" \
+            -d "Repositorio: ${{ github.repository }}
+                Rama: ${{ github.ref }}
+                Autor: ${{ github.actor }}
+                Commit: ${{ github.sha }}
+                Mensaje: ${{ github.event.head_commit.message }}
+                URL: ${{ github.event.repository.html_url }}" \
+            https://ntfy.sh/devops-itla
